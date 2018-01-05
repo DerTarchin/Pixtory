@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>Pixtory</title>
+
+    <!-- JS -->
+    <script src="assets/jquery-3.1.0.min.js"></script>
+    <script src="assets/jscolor.min.js"></script>
+
+    <!-- CSS -->
+    <link href="assets/style.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Lato:700,400,300' rel='stylesheet' type='text/css'>
+  </head>
+
+  <body>
+    <input id="input-file" type="file" style="display: none;" onchange="getData();" />
+    <div class="main">
+      <div class="display-wrapper">
+        <div class="display">
+          <label class="load_data" for="input-file">load data</label>
+          <label class="load_progress" >
+            <img src="assets/loading.svg" style="height: 40px; width: auto">
+            <div>0%</div>
+          </label>
+          <img id="img" style="display: none">
+          <div class="loupe" id="loupe">
+            <svg width="0" height="0">
+              <polygon id="mask" points="0,0 0,200 60,200 60,60 140,60 140,140 60,140 60,200 200,200 200,0"/>
+              <polygon id="outline" points="0,0 0,200 60,200 60,60 140,60 140,140 60,140 60,200 200,200 200,0"/>
+            </svg>
+          </div>
+        </div>
+      </div>      
+      <div class="control-pane-wrapper">
+        <div class="control-pane">
+          <img class="icon" src="assets/icon.svg">
+          <div class="controls">
+            <div class="controls-content">
+              <div class="color-container">
+                <div class="color-box">
+                  <button id="colorpicker" class="jscolor {position:'right', valueElement:null, value:'66ccff',  onFineChange:'updateDisplay(this)', width:243, height:150, position:'right', borderColor:'#383c52', insetColor:'#383c52', backgroundColor:'#1e1e29'}" value="cc66ff"></button>
+                </div>
+                <div class="color-text">
+                  <div style="display:none" id="inputstyle"></div>
+                  <ul>
+                    <li>Red <input id="input-red" type="number"></li>
+                    <li>Green <input id="input-green" type="number"></li>
+                    <li>Blue <input id="input-blue" type="number"></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="info-text info-text-freeze light" id="metadata">Copyright 2016 Hizal Celik</div>
+      <div class="info-text info-text-solid light" id="img_info"></div>
+    </div>
+
+    <!-- <script src="assets/data.min.js"></script> -->
+    <script src="assets/logic.js"></script>
+  </body>
+</html>

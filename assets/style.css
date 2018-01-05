@@ -1,0 +1,358 @@
+body {
+	background: #1e1e29;
+	color: #d5d6e1;
+	padding: 0;
+	margin: 0;
+	font-family: 'Lato', sans-serif;
+}
+
+*:focus,
+*:active {
+	outline: none;
+}
+
+.light {
+	font-weight: 300;
+}
+
+.heavy {
+	font-weight: 700;
+}
+
+.main {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.main > div:not(.info-text) {
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+}
+
+.display-wrapper {
+	width: 75%;
+
+	 /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#383c52+0,2c2d3e+100 */
+	background: #383c52; /* Old browsers */
+	background: -moz-radial-gradient(center, ellipse cover, #383c52 0%, #2c2d3e 100%); /* FF3.6-15 */
+	background: -webkit-radial-gradient(center, ellipse cover, #383c52 0%,#2c2d3e 100%); /* Chrome10-25,Safari5.1-6 */
+	background: radial-gradient(ellipse at center, #383c52 0%,#2c2d3e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#383c52', endColorstr='#2c2d3e',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */	
+}
+
+.display {
+	height: 100vh;
+	min-height: 1100px;
+	max-height: 100vh;
+	overflow: auto;
+	width: 100%;
+	min-width: 1100px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+
+.display #img {
+	border: 10px solid black;
+	max-width: 1100px;
+	max-height: 1100px;
+}
+
+.display #img:hover + .loupe {
+	opacity: .85;
+}
+
+.loupe:hover {
+	opacity: .85;
+}
+
+.loupe {
+	position: absolute;
+	display: none;
+	left: 0;
+	bottom: 0;
+	opacity: 0;
+	transition: opacity 0.1s ease;
+	transform: translate3d(0,0,0);
+}
+
+.loupe > svg > polygon:first-of-type {
+	fill: black;
+	fill-rule:evenodd;
+}
+
+.loupe > svg > polygon:last-of-type {
+	fill: transparent;
+	stroke: 1px solid white;
+}
+
+.img-info {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	color: rgba(255,255,255,0);
+	font-style: italic;
+	transition: color .5s ease;
+}
+
+.img-info.show {
+	color: rgba(255,255,255,.2);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.load_data {
+	position: relative;
+	display: block;
+	margin: 0 2px;
+	padding: 35px;
+	text-transform: uppercase;
+	overflow: hidden;
+	font-size: 25px;
+	cursor: pointer;
+	color: rgba(255,255,255,.5);
+}
+
+.load_data:before {
+	box-sizing: border-box;
+	transform: translateX(100%);
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 99.5%;
+	height: 3px;
+	border-bottom: 3px solid transparent;
+	border-left: 3px solid transparent;
+}
+
+.load_data:after {
+	box-sizing: border-box;
+	transform: translateX(-100%);
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 99.5%;
+	height: 3px;
+	border-top: 3px solid transparent;
+	border-right: 3px solid transparent;
+}
+
+.load_data:hover {
+	transition: color .15s linear;
+	color: #54c7b0;
+}
+
+.load_data:hover:before {
+	transition: .05s transform linear, .05s height linear .05s;
+	transform: translateX(0);
+	height: 100%;
+	border-color: #54c7b0;
+}
+
+.load_data:hover:after {
+	transition: .05s transform linear .1s, .05s height linear .15s;
+	transform: translateX(0);
+	height: 100%;
+	border-color: #54c7b0;
+}
+
+.load_progress {
+	display: none;
+	position: relative;
+	margin: 0 2px;
+	padding: 35px;
+	text-transform: uppercase;
+	overflow: hidden;
+	font-size: 25px;
+}
+
+.load_progress div {
+	display: block;
+	text-align: center;
+	color: rgba(255,255,255,.2);
+}
+
+.control-pane-wrapper {
+	height: 100vh;
+	width: 25%;
+	float: right;
+	background: #1e1e29;
+	z-index: 50;
+}
+
+.control-pane {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	flex-direction: column;
+}
+
+.icon {
+	height: 15vh;
+}
+
+.controls {
+	height: 0;
+	width: 100%;
+	/*background: green;*/
+
+-webkit-transition: all 600ms cubic-bezier(0.645, 0.045, 0.355, 1.000); 
+   -moz-transition: all 600ms cubic-bezier(0.645, 0.045, 0.355, 1.000); 
+     -o-transition: all 600ms cubic-bezier(0.645, 0.045, 0.355, 1.000); 
+        transition: all 600ms cubic-bezier(0.645, 0.045, 0.355, 1.000); /* easeInOutCubic */
+
+-webkit-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1.000); 
+   -moz-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1.000); 
+     -o-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1.000); 
+        transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1.000); /* easeInOutCubic */
+}
+
+.controls-content {
+	display: none;
+}
+
+.color-container {
+	width: 100%;
+	margin-top: 15vh;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	flex-direction: column;
+}
+
+.color-box {
+	height: 200px;
+	width: 200px;
+	margin: 20px;
+	border-radius: 15%;
+	background: green;
+	transition: background .15s ease;
+	transform: translate3d(0,0,0);
+	display: inline-block;
+}
+
+button.jscolor {
+	position: absolute;
+	transform: translate(-70px,220px);
+	visibility: hidden;
+}
+
+.color-text {
+	display: inline-block;
+}
+
+.color-text ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.color-text ul li {
+	padding: 20px 0;
+	position: relative;
+	text-transform: uppercase;
+	color: rgba(255,255,255,.5);
+	transition: all 0.15s ease-in-out 0s;
+	font-weight: 300;
+}
+
+.color-text ul li:hover {
+	color: white;
+}
+
+.color-text ul li:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  margin-top: 5px;
+  bottom: 10px;
+  left: 0;
+  background-color: white;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: transform 0.15s ease-in-out 0s;
+  transition: transform 0.15s ease-in-out 0s;
+}
+
+.color-text ul li:hover:before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+.color-text ul li input {
+	float: right;
+	margin-left: 30px;
+	background: transparent;
+	border: 0;
+	transition: all 0.15s ease-in-out 0s;
+	color: rgba(255,255,255,.5);
+	text-align: right;
+	font-weight: 700;
+	font-size: 15px;
+}
+
+.color-text ul li:hover input {
+	color: white;
+}
+
+.color-text ul li input::-webkit-outer-spin-button,
+.color-text ul li input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.info-text {
+	position: absolute;
+	width: 25%;
+	text-align: center;
+	padding: 50px;
+	padding-bottom: 8vh;
+	color: transparent;
+	bottom: 0;
+	right: 0;
+	transition: all .5s ease;
+	transition-delay: 0s;
+}
+
+.info-text-freeze {
+	color: rgba(255,255,255,.2);
+}
+
+.info-text-solid {
+	transition-delay: .5s;
+	color: rgba(255,255,255,.2);
+}
+
+.control-pane-wrapper:hover ~ .info-text-solid,
+.info-text:not(.info-text-freeze):not(.info-text-solid):hover + .info-text-solid
+/*.info-text:hover ~ .info-text-solid*/
+/*.info-text-solid:hover */
+{
+	transition-delay: 0s;
+	color: transparent;
+}
+
+.control-pane-wrapper:hover ~ .info-text:not(.info-text-freeze):not(.info-text-solid),
+.info-text:not(.info-text-freeze):not(.info-text-solid):hover 
+{
+	color: rgba(255,255,255,.2);
+	transition-delay: .5s;
+}
